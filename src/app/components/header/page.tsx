@@ -1,16 +1,18 @@
 import React from "react";
 import { IoSearch } from "react-icons/io5";
 import { MdNotificationsNone } from "react-icons/md";
+import Image from "next/image";
 
 export const Header = () => {
   return (
-    <header className="bg-[#1B1B1B] text-white h-30 px-30 font-poppins flex items-center">
-      <div className="container mx-auto flex items-center justify-between">
-        <div className="w-12 h-12 shrink-0">
-          <img
+    <header className="bg-[#1B1B1B] text-white h-30  px-30 py-5 font-poppins flex items-center">
+      <div className="container flex items-center justify-between">
+        <div className="w-15 h-15 shrink-0">
+          <Image
             src="/imgs/hck core logo.svg"
             alt="HeraldHub Logo"
-            className="size-full object-contain"
+            width={100}
+            height={100}
           />
         </div>
 

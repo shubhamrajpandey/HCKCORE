@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
+// import { useRouter } from "next/navigation";
 
 type FormData = {
   email: string;
@@ -13,6 +14,7 @@ type FormData = {
 
 export default function Login() {
   const [submitClicked, setSubmitClicked] = useState(false);
+  // const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -22,6 +24,7 @@ export default function Login() {
   const onSubmit = (data: FormData) => {
     console.log(data);
     setSubmitClicked(false);
+    // router.push("/signin"); can be used for authentication and navigate to the page
   };
 
   useEffect(() => {
@@ -38,7 +41,7 @@ export default function Login() {
   }, [errors, submitClicked]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-white">
+    <div className="min-h-[calc(100vh-120px)] flex items-center justify-center bg-white">
       <div className="flex w-[80%] max-w-6xl rounded-lg overflow-hidden">
         {/* Left side: Form and Google button */}
         <div className="w-1/2 p-10 flex flex-col justify-center">
@@ -118,13 +121,18 @@ export default function Login() {
               type="button"
               className="flex items-center justify-center gap-3 border border-gray-400 py-3 rounded-lg"
             >
-              <Image src="/google.png" alt="Google" width={40} height={40} />
+              <Image
+                src="/imgs/google.png"
+                alt="Google"
+                width={40}
+                height={40}
+              />
               <span className="font-medium">Sign up with Google</span>
             </button>
 
             <p className="text-sm text-center mt-2">
               Don't have an account?{" "}
-              <Link href="#" className="text-green-600 hover:underline">
+              <Link href="/signin" className="text-green-600 hover:underline">
                 Sign Up
               </Link>
             </p>
@@ -132,7 +140,7 @@ export default function Login() {
         </div>
         <div className="w-1/2 bg-white flex items-center justify-center p-5">
           <Image
-            src="/image.png"
+            src="/imgs/image.png"
             alt="Illustration"
             width={400}
             height={400}
