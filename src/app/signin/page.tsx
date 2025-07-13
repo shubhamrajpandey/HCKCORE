@@ -4,6 +4,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
 import { Checkbox } from "@/components/ui/checkbox";
+import Link from "next/link";
 
 interface FormInput {
   fullName: string;
@@ -13,7 +14,7 @@ interface FormInput {
   confirmPassword: string;
 }
 
-export const Signin: React.FC = () => {
+const Signin: React.FC = () => {
   const {
     register,
     handleSubmit,
@@ -157,8 +158,7 @@ export const Signin: React.FC = () => {
           </button>
 
           <p className="text-sm py-6 text-center">
-            Already have an account?{" "}
-            <span className="text-[#74BF44] cursor-pointer">Log In</span>
+            Already have an account? <Link href="/login">Log in</Link>
           </p>
         </form>
 
@@ -176,3 +176,4 @@ export const Signin: React.FC = () => {
     </div>
   );
 };
+export default Signin;
