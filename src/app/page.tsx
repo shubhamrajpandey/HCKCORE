@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Header } from "./components/header/page";
-import { Signin } from "./signin/page";
 import Login from "./login/page";
 
 export default function Home() {
