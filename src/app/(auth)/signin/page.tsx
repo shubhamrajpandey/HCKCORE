@@ -8,8 +8,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
-// Inside your component
-
 interface FormInput {
   fullName: string;
   phoneNumber: number;
@@ -58,13 +56,13 @@ const Signin: React.FC = () => {
             </label>
             <input
               type="text"
-              {...register("fullName", { required: true })}
+              {...register("fullName", { required: "Please enter your full name" })}
               className="w-[90%] mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none"
             />
             {errors.fullName && (
-              <span className="text-red-500 text-xs">
-                This field is required
-              </span>
+               <span className="text-red-500 text-xs mt-1 block">
+                {errors.fullName.message}
+               </span>
             )}
           </div>
 
@@ -74,13 +72,13 @@ const Signin: React.FC = () => {
             </label>
             <input
               type="number"
-              {...register("phoneNumber", { required: true })}
+              {...register("phoneNumber", { required: "Phone number is required" })}
               className="w-[90%] mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none"
             />
-            {errors.phoneNumber && (
-              <span className="text-red-500 text-xs">
-                This field is required
-              </span>
+             {errors.phoneNumber && (
+               <span className="text-red-500 text-xs mt-1 block">
+                {errors.phoneNumber.message}
+               </span>
             )}
           </div>
 
@@ -100,7 +98,7 @@ const Signin: React.FC = () => {
               className="w-[90%] mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none"
             />
             {errors.email && (
-              <span className="text-red-500 text-xs">
+              <span className="text-red-500 text-xs mt-1 block">
                 {errors.email.message}
               </span>
             )}
@@ -116,14 +114,14 @@ const Signin: React.FC = () => {
               className="w-full mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none pr-10"
             />
             <div
-              className="absolute right-3 top-[42px] cursor-pointer"
+              className="absolute right-3 top-[48px] cursor-pointer"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? <FiEyeOff /> : <FiEye />}
             </div>
             {errors.password && (
-              <span className="text-red-500 text-xs">
-                This field is required
+              <span className="text-red-500 text-xs mt-1 block">
+                Password is required
               </span>
             )}
           </div>
@@ -138,14 +136,14 @@ const Signin: React.FC = () => {
               className="w-full mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none pr-10"
             />
             <div
-              className="absolute right-3 top-[42px] cursor-pointer"
+              className="absolute right-3 top-[48px] cursor-pointer"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
             >
               {showConfirmPassword ? <FiEyeOff /> : <FiEye />}
             </div>
             {errors.confirmPassword && (
-              <span className="text-red-500 text-xs">
-                This field is required
+              <span className="text-red-500 text-xs mt-1 block">
+                Confrim Password is required
               </span>
             )}
           </div>
@@ -157,7 +155,7 @@ const Signin: React.FC = () => {
           )}
 
           <div className="flex items-center mb-4">
-            <Checkbox className="data-[state=checked]:bg-[#74BF44] data-[state=checked]:text-white border-black" />
+            <Checkbox className="data-[state=checked]:bg-[#74BF44] data-[state=checked]:text-white border-black cursor-pointer" />
             <label className="text-sm ml-2.5">I accept terms and policy</label>
           </div>
 
@@ -170,7 +168,7 @@ const Signin: React.FC = () => {
 
           <p className="text-sm py-6 text-center">
             Already have an account?{" "}
-            <Link href="/login" className="text-green-600  hover:underline">
+            <Link href="/login" className="text-green-600  underline">
               Log in
             </Link>
           </p>
