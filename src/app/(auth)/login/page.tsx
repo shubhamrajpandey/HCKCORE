@@ -41,10 +41,10 @@ export default function Login() {
   }, [errors, submitClicked]);
 
   return (
-    <div className="min-h-[calc(100vh-120px)] flex items-center justify-center bg-white">
-      <div className="flex w-[80%] max-w-6xl rounded-lg overflow-hidden">
+    <div className="min-h-[calc(100vh-120px)] flex items-center justify-center">
+      <div className="flex w-[1310]  rounded-lg overflow-hidden justify-between">
         {/* Left side: Form and Google button */}
-        <div className="w-1/2 p-10 flex flex-col justify-center">
+        <div className="w-fit p-10 flex flex-col justify-center">
           <h1 className="text-4xl font-bold mb-8">Welcome back!</h1>
 
           <form
@@ -55,7 +55,7 @@ export default function Login() {
             }}
             className="flex flex-col gap-4"
           >
-            <div>
+            <div className="flex flex-col">
               <label className="font-medium">
                 Email <span className="text-red-600">*</span>
               </label>
@@ -63,7 +63,7 @@ export default function Login() {
                 type="email"
                 placeholder="Enter your email address"
                 {...register("email", { required: "Email is required" })}
-                className="w-full mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none"
+                className="w-[415px] h-[60px] mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none"
               />
               {/* {errors.email && (
                 <p className="text-red-500 text-sm mt-1">
@@ -71,7 +71,7 @@ export default function Login() {
                 </p>
               )} */}
             </div>
-            <div>
+            <div className="flex flex-col">
               <label className="font-medium">
                 Password <span className="text-red-600">*</span>
               </label>
@@ -81,7 +81,7 @@ export default function Login() {
                 {...register("password", {
                   required: "Password is required",
                 })}
-                className="w-full mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none"
+                className="w-[415px] h-[60px] mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none"
               />
               {/* {errors.password && (
                 <p className="text-red-500 text-sm mt-1">
@@ -106,7 +106,7 @@ export default function Login() {
 
             <button
               type="submit"
-              className="bg-green-500 text-white py-3 rounded-lg font-medium hover:bg-green-600 transition"
+              className="bg-green-500 text-white py-3 rounded-lg font-medium hover:bg-green-600 transition w-[415px] h-[60px]"
             >
               Login
             </button>
@@ -119,7 +119,7 @@ export default function Login() {
 
             <button
               type="button"
-              className="flex items-center justify-center gap-3 border border-gray-400 py-3 rounded-lg"
+              className="flex items-center justify-center gap-3 border border-gray-400 py-3 rounded-lg w-[415px] h-[60px]"
             >
               <Image
                 src="/imgs/google.png"
@@ -142,8 +142,8 @@ export default function Login() {
           <Image
             src="/imgs/image.png"
             alt="Illustration"
-            width={400}
-            height={400}
+            width={500}
+            height={500}
             priority
           />
         </div>
