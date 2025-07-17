@@ -1,4 +1,5 @@
 
+
 import HomeSection from "./(dashboard)/home/page";
 
 export default function Home() {
@@ -8,4 +9,3 @@ export default function Home() {
     </div>
   );
 }
-  
