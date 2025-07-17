@@ -11,7 +11,7 @@ const roles = [
       "Review and approve student-submitted content",
       "Organize resources by tags, topics, or weekly structure",
     ],
-    img: "/imgs/module-leader.png",
+    img: "",
   },
   {
     title: "Students",
@@ -20,7 +20,7 @@ const roles = [
       "Discover approved course-aligned content curated by instructors",
       "Access extra learning resources beyond the classroom",
     ],
-    img: "/imgs/student.png",
+    img: "",
   },
 ];
 
@@ -41,11 +41,11 @@ export default function WhoSection() {
   <div className="max-w-7xl mx-auto  px-6 py-16 rounded-xl flex flex-col md:flex-row items-center justify-between gap-10">
    
     <div className="flex-1 text-left">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">
+      <h2 className="text-3xl md:text-[50px] font-bold mb-4">
         Who is HCK Core for?
       </h2>
-      <p className="text-gray-700 text-base md:text-lg">
-        Designed for both students and module leaders, HCK Core simplifies academic sharing and collaboration.
+      <p className="text-gray-700 text-base md:text-[22px]/9">
+        Designed for both students and module leaders,<br/> HCK Core simplifies academic sharing and <br/>collaboration.
       </p>
     </div>
 
@@ -61,8 +61,8 @@ export default function WhoSection() {
         }}
       >
         <div className="bg-white bg-opacity-90 p-4 rounded-lg">
-          <h3 className="text-xl font-bold mb-4">{activeRole.title}</h3>
-          <ul className="list-disc pl-5 text-sm text-gray-800 space-y-2">
+          <h3 className="text-[40px] font-bold mb-4">{activeRole.title}</h3>
+          <ul className="list-disc pl-5 text[25px] text-black  font-medium tracking-[0.2px]  space-y-2">
             {activeRole.points.map((point, idx) => (
               <li key={idx}>{point}</li>
             ))}
