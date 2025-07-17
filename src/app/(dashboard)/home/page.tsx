@@ -1,8 +1,7 @@
 import WhoSection from "@/app/components/who-section/WhoSection";
 import Image from "next/image";
-import { LiaChalkboardTeacherSolid } from "react-icons/lia";
-import { PiStudentDuotone } from "react-icons/pi";
-import { IoSearchSharp } from "react-icons/io5";
+
+import Card from "@/app/components/cards/Card";
 
 
 export default function HomeSection() {
@@ -43,65 +42,29 @@ export default function HomeSection() {
               at Herald College
             </h1>
           </div>
-
-          <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-8 -mt-50">
-            <div className="w-[320px] h-[350px] bg-white border rounded-xl p-6 shadow-[6px_6px_0px_#000000] hover:shadow-xl transition">
-              <div className="mb-3">
-               
-                <LiaChalkboardTeacherSolid  className="w-8 h-8"/>
-              </div>
-              <h4 className="text-[30px] font-semibold mb-2">Teacher Moderation</h4>
-              <p className="text-[15px]/6 text-gray-700">
-                Module leaders review and approve submissions to ensure they align
-                with course objectives, maintain academic accuracy, and provide a
-                trusted learning experience for all students.
-              </p>
-            </div>
-
-            <div className="w-[320px] h-[350px] bg-white border rounded-xl p-6 shadow-[6px_6px_0px_#000000] hover:shadow-xl transition">
-              <div className="mb-3">
-                <PiStudentDuotone className="w-8 h-8"/>
-              </div>
-              <h4 className="text-[30px] font-semibold mb-2">
-                Student Contributions
-              </h4>
-              <p className="text-[15px]/6 text-gray-700">
-                Students submit tutorials, articles, or GitHub projects supporting
-                their coursework, helping peers learn from trusted resources.
-              </p>
-            </div>
-
-            <div className="w-[320px] h-[350px] bg-white border rounded-xl p-6 shadow-[6px_6px_0px_#000000] hover:shadow-xl transition">
-              <div className="mb-3">
-                <IoSearchSharp className="w-8 h-8"/>
-              </div>
-              <h4 className="text-[30px] font-semibold mb-2">Tag-Based Discovery</h4>
-              <p className="text-[15px]/6 text-gray-700">
-                Resources use smart tags by course week, topic, and contributor,
-                making it easy to quickly filter and find what you need.
-              </p>
-            </div>
-          </div>
+          <Card/>
         </div>
 
         <WhoSection/>
 
-        <div className="flex justify-around">
-          <div className="px-7">
+    
+
+        <div className="flex justify-around py-4">
+          <div className="px-11">
             <p className="text-[20px]/10 text-gray-500">Undergraduate</p>
             <button className="w-[250px] h-[80px] border-2 border-transparent rounded-[6px] bg-[#A4C93A] text-[20px] font-semibold cursor-pointer hover:bg-white hover:text-[#A4C93A] transition duration-300">Information Technology</button><br/>
-            <button className="w-[250px] h-[80px] border-none rounded-[6px] ml-70 mt-4 bg-[#44BFB1] text-[20px] font-semibold  hover:bg-white hover:text-[#A4C93A] transition duration-300">Cyber Security</button><br/>
-            <button className="w-[250px] h-[80px] border-none rounded-[6px] mt-4 bg-[#C7C7C7] text-[20px] font-semibold">International Business<br/>Management</button>
+            <button className="w-[250px] h-[80px] border-none rounded-[6px] ml-70 mt-4 bg-[#44BFB1] text-[20px] font-semibold  hover:bg-white hover:text-[#44BFB1] transition duration-300">Cyber Security</button><br/>
+            <button className="w-[250px] h-[80px] border-none rounded-[6px] mt-4 bg-[#C7C7C7] text-[20px] font-semibold  hover:bg-white hover:text-[#C7C7C7] transition duration-300">International Business<br/>Management</button>
             <p className="text-[20px]/10 ml-70 text-gray-500">Postgraduate</p>
-            <button className="w-[250px] h-[80px] border-none rounded-[6px] ml-70 bg-[#FFC93F] text-[20px] font-semibold">Business Administration</button>
+            <button className="w-[250px] h-[80px] border-none rounded-[6px] ml-70 bg-[#FFC93F] text-[20px] font-semibold  hover:bg-white hover:text-[#FFC93F] transition duration-300">Business Administration</button>
           </div>
-          <div >
+          <div  className="py-35 mr-20" >
             <h1 className="text-[45px]/15 font-semibold tracking-normal">Programs we<br/>Support</h1>
             <p className="text-[21px] py-4">Available for both undergraduate<br/>and postgraduate levels.</p>
           </div>
         </div>
 
-        <div className="text-[50px] font-semibold tracking-[1px] text-center py-10 font-Poppins mt-28">
+        <div className="text-[50px] font-semibold tracking-[0.5px] text-center py-17 font-Poppins mt-7">
           <h1> A resource-sharing platform for</h1>
           <h1> Herald College Kathmandu</h1>
         </div>
