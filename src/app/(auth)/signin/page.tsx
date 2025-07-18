@@ -7,10 +7,15 @@ import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
 import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import axiosInstance from "@/lib/axiosInstance";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { Toaster, toast } from "react-hot-toast";
+
 
 interface FormInput {
   fullName: string;
-  phoneNumber: number;
+  phoneNumber: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -19,6 +24,8 @@ interface FormInput {
 const Signin: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const router = useRouter();
+
 
   const {
     register,
@@ -31,16 +38,31 @@ const Signin: React.FC = () => {
   const confirmPassword = watch("confirmPassword");
   const isMatching = password === confirmPassword;
 
-  const onSubmit = (data: FormInput) => {
+  const onSubmit = async (data: FormInput) => {
     if (!isMatching) {
       alert("Passwords do not match");
       return;
     }
-    console.log("Form Data", data);
+
+    try {
+      const response = await axiosInstance.post("/auth/register/student", data);
+      console.log("Registered:", response.data);
+      toast.success("Successfully toasted!");
+      router.push("/login");
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        console.error("Axios Error:", error.response?.data);
+        toast.error(error.response?.data?.message || "Registration Failed");
+      } else {
+        console.error("Unknown Error:", error);
+        alert("An unexpected error occurred");
+      }
+    }
   };
 
   return (
     <div className="flex items-center justify-center flex-grow bg-white px-20">
+      <Toaster position="top-center" reverseOrder={false} />
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-around">
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -56,13 +78,15 @@ const Signin: React.FC = () => {
             </label>
             <input
               type="text"
-              {...register("fullName", { required: "Please enter your full name" })}
+              {...register("fullName", {
+                required: "Please enter your full name",
+              })}
               className="w-[90%] mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none"
             />
             {errors.fullName && (
-               <span className="text-red-500 text-xs mt-1 block">
+              <span className="text-red-500 text-xs mt-1 block">
                 {errors.fullName.message}
-               </span>
+              </span>
             )}
           </div>
 
@@ -72,13 +96,15 @@ const Signin: React.FC = () => {
             </label>
             <input
               type="number"
-              {...register("phoneNumber", { required: "Phone number is required" })}
+              {...register("phoneNumber", {
+                required: "Phone number is required",
+              })}
               className="w-[90%] mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none"
             />
-             {errors.phoneNumber && (
-               <span className="text-red-500 text-xs mt-1 block">
+            {errors.phoneNumber && (
+              <span className="text-red-500 text-xs mt-1 block">
                 {errors.phoneNumber.message}
-               </span>
+              </span>
             )}
           </div>
 
@@ -143,7 +169,7 @@ const Signin: React.FC = () => {
             </div>
             {errors.confirmPassword && (
               <span className="text-red-500 text-xs mt-1 block">
-                Confrim Password is required
+                Confirm Password is required
               </span>
             )}
           </div>
@@ -161,14 +187,14 @@ const Signin: React.FC = () => {
 
           <button
             type="submit"
-            className="w-[90%] bg-[#74BF44] text-white py-3 rounded-[12px] text-sm font-semibold"
+            className="w-[90%] bg-[#74BF44] text-white py-3 rounded-[12px] text-sm font-semibold cursor-pointer hover:bg-green-600"
           >
             Sign Up
           </button>
 
           <p className="text-sm py-6 text-center">
             Already have an account?{" "}
-            <Link href="/login" className="text-green-600  underline">
+            <Link href="/login" className="text-green-600  hover:underline">
               Log in
             </Link>
           </p>
