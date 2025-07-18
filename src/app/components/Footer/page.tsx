@@ -10,11 +10,21 @@ export default function Footer() {
     <div className="bg-[#1B1B1B] flex flex-col items-center justify-center text-white py-10 gap-15">
       <div className="flex flex-col items-center justify-center gap-4 w-full">
         <div className="flex w-full items-center justify-center space-x-50 text-lg font-semibold">
-          <Link href="#">About HCK Core</Link>
-          <Link href="#">Contact Team</Link>
-          <Link href="#">Help & FAQs</Link>
-          <Link href="#">Privacy Policy</Link>
-          <Link href="#">Terms of Use</Link>
+          <Link className="hover:text-[#74BF44]" href="#">
+            About HCK Core
+          </Link>
+          <Link className="hover:text-[#74BF44]" href="#">
+            Contact Team
+          </Link>
+          <Link className="hover:text-[#74BF44]" href="#">
+            Help & FAQs
+          </Link>
+          <Link className="hover:text-[#74BF44]" href="#">
+            Privacy Policy
+          </Link>
+          <Link className="hover:text-[#74BF44]" href="#">
+            Terms of Use
+          </Link>
         </div>
 
         <div className="flex w-[85%] justify-center items-center mt-4 mb-4">
