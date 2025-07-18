@@ -14,6 +14,7 @@ type FormData = {
 
 export default function Login() {
   const [submitClicked, setSubmitClicked] = useState(false);
+  const [remembermeChecked, setremembermeChecked] = useState(false);
   const router = useRouter();
   const {
     register,
@@ -26,7 +27,7 @@ export default function Login() {
       "https://herald-hub-backend.onrender.com/auth/login",
       {
         method: "POST",
-        credentials: "include",
+        credentials: remembermeChecked ? "include" : "omit",
         headers: {
           "content-type": "application/json",
         },
@@ -38,7 +39,7 @@ export default function Login() {
     if (!res.ok) {
       alert(result.message || "something went wrong");
     } else {
-      router.push("/(dashboard)");
+      router.push("/dashboard/home");
     }
   };
 
@@ -110,6 +111,7 @@ export default function Login() {
                   type="checkbox"
                   {...register("rememberMe")}
                   id="rememberMe"
+                  onChange={(e) => setremembermeChecked(e.target.checked)}
                   className="mr-2 rounded-full"
                 />
                 <label htmlFor="rememberMe">Remember me</label>
@@ -121,7 +123,7 @@ export default function Login() {
 
             <button
               type="submit"
-              className="bg-green-500 text-white py-3 rounded-lg font-medium hover:bg-green-600 transition w-[415px] h-[60px]"
+              className="bg-green-500 text-white py-3 rounded-lg font-medium hover:bg-green-600 transition w-[415px] h-[60px] cursor-pointer"
             >
               Login
             </button>
@@ -134,7 +136,7 @@ export default function Login() {
 
             <button
               type="button"
-              className="flex items-center justify-center gap-3 border border-gray-400 py-3 rounded-lg w-[415px] h-[60px]"
+              className="flex items-center justify-center gap-3 border border-gray-400 py-3 rounded-lg w-[415px] h-[60px] cursor-pointer"
             >
               <Image
                 src="/imgs/google.png"
