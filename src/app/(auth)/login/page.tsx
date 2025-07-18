@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 type FormData = {
   email: string;
@@ -14,17 +14,32 @@ type FormData = {
 
 export default function Login() {
   const [submitClicked, setSubmitClicked] = useState(false);
-  // const router = useRouter();
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit = (data: FormData) => {
-    console.log(data);
-    setSubmitClicked(false);
-    // router.push("/signin"); can be used for authentication and navigate to the page
+  const onSubmit = async (data: FormData) => {
+    const res = await fetch(
+      "https://herald-hub-backend.onrender.com/auth/login",
+      {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    const result = await res.json();
+    console.log(result);
+    if (!res.ok) {
+      alert(result.message || "something went wrong");
+    } else {
+      router.push("/(dashboard)");
+    }
   };
 
   useEffect(() => {
@@ -42,7 +57,7 @@ export default function Login() {
 
   return (
     <div className="min-h-[calc(100vh-120px)] flex items-center justify-center">
-      <div className="flex w-[1310]  rounded-lg overflow-hidden justify-between">
+      <div className="flex flex-col md:flex-row w-full md:w-[1310] rounded-lg overflow-hidden justify-between">
         {/* Left side: Form and Google button */}
         <div className="w-fit p-10 flex flex-col justify-center">
           <h1 className="text-4xl font-bold mb-8">Welcome back!</h1>
@@ -138,12 +153,12 @@ export default function Login() {
             </p>
           </form>
         </div>
-        <div className="w-1/2 bg-white flex items-center justify-center p-5">
+        <div className="relative w-1/2 flex items-center justify-center p-5 md:w-[500px] min-w-[300px] h-[300px] md:h-[500px]">
           <Image
             src="/imgs/image.png"
             alt="Illustration"
-            width={500}
-            height={500}
+            fill
+            className="object-contain"
             priority
           />
         </div>
