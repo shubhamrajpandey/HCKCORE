@@ -53,10 +53,11 @@ export default function HomeSection() {
           <div className="px-11">
             <p className="text-[20px]/10 text-gray-500">Undergraduate</p>
             <button className="w-[250px] h-[80px] border-2 border-transparent rounded-[6px] bg-[#A4C93A] text-[20px] font-semibold cursor-pointer hover:bg-white hover:text-[#A4C93A] transition duration-300">Information Technology</button><br/>
-            <button className="w-[250px] h-[80px] border-none rounded-[6px] ml-70 mt-4 bg-[#44BFB1] text-[20px] font-semibold  hover:bg-white hover:text-[#44BFB1] transition duration-300">Cyber Security</button><br/>
+            <button className="w-[250px] h-[80px] border-none rounded-[6px] ml-64 mt-4 bg-[#44BFB1] text-[20px] font-semibold  hover:bg-white hover:text-[#44BFB1] transition duration-300">Cyber Security</button><br/>
             <button className="w-[250px] h-[80px] border-none rounded-[6px] mt-4 bg-[#C7C7C7] text-[20px] font-semibold  hover:bg-white hover:text-[#C7C7C7] transition duration-300">International Business<br/>Management</button>
             <p className="text-[20px]/10 ml-70 text-gray-500">Postgraduate</p>
-            <button className="w-[250px] h-[80px] border-none rounded-[6px] ml-70 bg-[#FFC93F] text-[20px] font-semibold  hover:bg-white hover:text-[#FFC93F] transition duration-300">Business Administration</button>
+            <button className="w-[250px] h-[80px] border-none rounded-[6px] ml-64 bg-[#FFC93F] text-[20px] font-semibold  hover:bg-white hover:text-[#FFC93F] transition duration-300">Business Administration</button>
+
           </div>
           <div  className="py-35 mr-20" >
             <h1 className="text-[45px]/15 font-semibold tracking-normal">Programs we<br/>Support</h1>

@@ -9,7 +9,7 @@ export const Header = () => {
     <header className="bg-[#1B1B1B] text-white h-[80px] w-full font-poppins">
       <div className="max-w-[1320px] mx-auto flex items-center justify-between h-full">
 
-        <Link href="/(dashboard)">
+        <Link href="/home">
           <div className="w-[80px] h-[60px]">
             <Image
               src="/imgs/hck core logo.svg"

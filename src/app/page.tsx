@@ -1,11 +1,5 @@
-
-
-import HomeSection from "./(dashboard)/home/page";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return (
-    <div>
-      <HomeSection/>
-    </div>
-  );
+  redirect("/home");
 }
