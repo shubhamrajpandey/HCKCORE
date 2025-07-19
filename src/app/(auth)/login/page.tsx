@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 type FormData = {
   email: string;
@@ -23,24 +24,43 @@ export default function Login() {
   } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
-    const res = await fetch(
-      "https://herald-hub-backend.onrender.com/auth/login",
-      {
-        method: "POST",
-        credentials: remembermeChecked ? "include" : "omit",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(data),
+    try {
+      const res = await axios.post(
+        "https://herald-hub-backend.onrender.com/auth/login",
+        data,
+        {
+          withCredentials: remembermeChecked,
+          headers: { "content-type": "application/json" },
+        }
+      );
+      if (res.status == 200) {
+        router.push("/home");
+      } else {
+        alert("something went wrong?");
       }
-    );
-    const result = await res.json();
-    console.log(result);
-    if (!res.ok) {
-      alert(result.message || "something went wrong");
-    } else {
-      router.push("/dashboard/home");
+    } catch (e: any) {
+      alert(e.response?.data?.message || "something went wrong");
+      console.error(e);
     }
+
+    // const res = await fetch(
+    //   "https://herald-hub-backend.onrender.com/auth/login",
+    //   {
+    //     method: "POST",
+    //     credentials: remembermeChecked ? "include" : "omit",
+    //     headers: {
+    //       "content-type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   }
+    // );
+    // const result = await res.json();
+    // console.log(result);
+    // if (!res.ok) {
+    //   alert(result.message || "something went wrong");
+    // } else {
+    //   router.push("/dashboard/home");
+    // }
   };
 
   useEffect(() => {
