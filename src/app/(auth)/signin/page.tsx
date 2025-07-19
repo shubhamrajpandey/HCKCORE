@@ -3,7 +3,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
-import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
 import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
@@ -12,20 +11,22 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { Toaster, toast } from "react-hot-toast";
 
-
+//sabai field ko type haru 
 interface FormInput {
   fullName: string;
   phoneNumber: string;
   email: string;
   password: string;
   confirmPassword: string;
+  terms: boolean;
 }
 
 const Signin: React.FC = () => {
+  //password, showpassword ko  lagi usestate
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const router = useRouter();
 
+  const router = useRouter();
 
   const {
     register,
@@ -39,15 +40,14 @@ const Signin: React.FC = () => {
   const isMatching = password === confirmPassword;
 
   const onSubmit = async (data: FormInput) => {
-    if (!isMatching) {
-      alert("Passwords do not match");
-      return;
-    }
-
+ 
     try {
+      //axios bata api fetch 
       const response = await axiosInstance.post("/auth/register/student", data);
       console.log("Registered:", response.data);
-      toast.success("Successfully toasted!");
+      //messgae successfully logged in
+      toast.success("Successfully logged in!");
+      //sidhai login page ma shift hunchha
       router.push("/login");
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
@@ -64,6 +64,7 @@ const Signin: React.FC = () => {
     <div className="flex items-center justify-center flex-grow bg-white px-20">
       <Toaster position="top-center" reverseOrder={false} />
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-around">
+
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="w-1/2.5 max-w-md bg-white rounded-md font-poppins mt-20"
@@ -72,6 +73,7 @@ const Signin: React.FC = () => {
             Create your Account
           </h1>
 
+          {/* Full Name  */}
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1 text-[16px]">
               Full Name
@@ -90,6 +92,7 @@ const Signin: React.FC = () => {
             )}
           </div>
 
+          {/* phoneNumber */}
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1 text-[16px]">
               Phone Number
@@ -108,6 +111,7 @@ const Signin: React.FC = () => {
             )}
           </div>
 
+          {/* Email */}
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1 text-[16px]">
               Email
@@ -130,6 +134,7 @@ const Signin: React.FC = () => {
             )}
           </div>
 
+          {/* Password */}
           <div className="mb-4 relative w-[90%]">
             <label className="block text-sm font-medium mb-1 text-[16px]">
               Password
@@ -152,6 +157,7 @@ const Signin: React.FC = () => {
             )}
           </div>
 
+          {/*  Confirm Password */}
           <div className="mb-4 relative w-[90%]">
             <label className="block text-sm font-medium mb-1 text-[16px]">
               Confirm Password
@@ -174,16 +180,32 @@ const Signin: React.FC = () => {
             )}
           </div>
 
+          {/* Match Chhaina Bhane*/}
           {!isMatching && (
             <span className="text-red-600 text-xs block mb-4">
               Passwords do not match
             </span>
           )}
 
+          {/* checkbox */}
           <div className="flex items-center mb-4">
-            <Checkbox className="data-[state=checked]:bg-[#74BF44] data-[state=checked]:text-white border-black cursor-pointer" />
-            <label className="text-sm ml-2.5">I accept terms and policy</label>
+            <input
+              type="checkbox"
+              id="terms"
+              {...register("terms", {
+                required: "You must accept the terms and policy",
+              })}
+              className="w-4 h-4 cursor-pointer accent-green-500 "
+            />
+            <label htmlFor="terms" className="text-sm ml-2.5">
+              I accept terms and policy
+            </label>
           </div>
+          {errors.terms && (
+            <span className="text-red-500 text-xs mb-2 block">
+              {errors.terms.message as string}
+            </span>
+          )}
 
           <button
             type="submit"
@@ -200,6 +222,7 @@ const Signin: React.FC = () => {
           </p>
         </form>
 
+        {/* Image */}
         <div className="hidden md:block">
           <Image
             src="/imgs/sign-up.svg"
