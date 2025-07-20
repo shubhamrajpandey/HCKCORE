@@ -80,7 +80,7 @@ export default function Login() {
 
   return (
     <div className="min-h-[calc(100vh-120px)] flex items-center justify-center">
-      <div className="flex flex-col md:flex-row w-full md:w-[1310] rounded-lg overflow-hidden justify-between">
+      <div className="flex flex-col md:flex-row w-full md:w-[1321] rounded-lg overflow-hidden justify-between">
         {/* Left side: Form and Google button */}
         <div className="w-fit p-10 flex flex-col justify-center">
           <h1 className="text-4xl font-bold mb-8">Welcome back!</h1>
@@ -184,7 +184,7 @@ export default function Login() {
             src="/imgs/image.png"
             alt="Illustration"
             fill
-            className="object-contain"
+            className="object-contain mt-15 mr-20"
             priority
           />
         </div>
