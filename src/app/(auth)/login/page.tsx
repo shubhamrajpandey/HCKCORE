@@ -34,6 +34,7 @@ export default function Login() {
         }
       );
       if (res.status == 200) {
+        localStorage.setItem("token", res.data.token); 
         router.push("/home");
       } else {
         alert("something went wrong?");

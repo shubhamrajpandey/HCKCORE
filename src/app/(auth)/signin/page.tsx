@@ -39,26 +39,34 @@ const Signin: React.FC = () => {
   const confirmPassword = watch("confirmPassword");
   const isMatching = password === confirmPassword;
 
-  const onSubmit = async (data: FormInput) => {
- 
-    try {
-      //axios bata api fetch 
-      const response = await axiosInstance.post("/auth/register/student", data);
-      console.log("Registered:", response.data);
-      //messgae successfully logged in
-      toast.success("Successfully logged in!");
-      //sidhai login page ma shift hunchha
-      router.push("/login");
-    } catch (error: unknown) {
-      if (axios.isAxiosError(error)) {
-        console.error("Axios Error:", error.response?.data);
-        toast.error(error.response?.data?.message || "Registration Failed");
-      } else {
-        console.error("Unknown Error:", error);
-        alert("An unexpected error occurred");
-      }
+ const onSubmit = async (data: FormInput) => {
+  if (!isMatching) {
+    toast.error("Passwords do not match");
+    return;
+  }
+  //loading 
+  const toastId = toast.loading("Registering your account...");
+
+  try {
+    //axios bata fetch
+    const response = await axiosInstance.post("/auth/register/student", data);
+    console.log("Registered:", response.data);
+    //message of Successfully registered
+    toast.success("Successfully registered!", { id: toastId });
+    router.push("/login");
+  } catch (error: unknown) {
+    if (axios.isAxiosError(error)) {
+      console.error("Axios Error:", error.response?.data);
+      toast.error(error.response?.data?.message || "Registration Failed", {
+        id: toastId,
+      });
+    } else {
+      console.error("Unknown Error:", error);
+      toast.error("An unexpected error occurred", { id: toastId });
     }
-  };
+  }
+};
+
 
   return (
     <div className="flex items-center justify-center flex-grow bg-white px-20">
