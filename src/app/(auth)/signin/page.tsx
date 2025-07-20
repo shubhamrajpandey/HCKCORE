@@ -10,8 +10,8 @@ import axiosInstance from "@/lib/axiosInstance";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { Toaster, toast } from "react-hot-toast";
-
-//sabai field ko type haru 
+import { motion } from "framer-motion";
+//sabai field ko type haru
 interface FormInput {
   fullName: string;
   phoneNumber: string;
@@ -39,40 +39,38 @@ const Signin: React.FC = () => {
   const confirmPassword = watch("confirmPassword");
   const isMatching = password === confirmPassword;
 
- const onSubmit = async (data: FormInput) => {
-  if (!isMatching) {
-    toast.error("Passwords do not match");
-    return;
-  }
-  //loading 
-  const toastId = toast.loading("Registering your account...");
-
-  try {
-    //axios bata fetch
-    const response = await axiosInstance.post("/auth/register/student", data);
-    console.log("Registered:", response.data);
-    //message of Successfully registered
-    toast.success("Successfully registered!", { id: toastId });
-    router.push("/login");
-  } catch (error: unknown) {
-    if (axios.isAxiosError(error)) {
-      console.error("Axios Error:", error.response?.data);
-      toast.error(error.response?.data?.message || "Registration Failed", {
-        id: toastId,
-      });
-    } else {
-      console.error("Unknown Error:", error);
-      toast.error("An unexpected error occurred", { id: toastId });
+  const onSubmit = async (data: FormInput) => {
+    if (!isMatching) {
+      toast.error("Passwords do not match");
+      return;
     }
-  }
-};
+    //loading
+    const toastId = toast.loading("Registering your account...");
 
+    try {
+      //axios bata fetch
+      const response = await axiosInstance.post("/auth/register/student", data);
+      console.log("Registered:", response.data);
+      //message of Successfully registered
+      toast.success("Successfully registered!", { id: toastId });
+      router.push("/login");
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        console.error("Axios Error:", error.response?.data);
+        toast.error(error.response?.data?.message || "Registration Failed", {
+          id: toastId,
+        });
+      } else {
+        console.error("Unknown Error:", error);
+        toast.error("An unexpected error occurred", { id: toastId });
+      }
+    }
+  };
 
   return (
     <div className="flex items-center justify-center flex-grow bg-white px-20">
       <Toaster position="top-center" reverseOrder={false} />
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-around">
-
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="w-1/2.5 max-w-md bg-white rounded-md font-poppins mt-20"
@@ -124,7 +122,8 @@ const Signin: React.FC = () => {
             <label className="block text-sm font-medium mb-1 text-[16px]">
               Email
             </label>
-            <input
+            <motion.input
+              layoutId="email"
               type="email"
               {...register("email", {
                 required: "Email is required",
@@ -147,7 +146,8 @@ const Signin: React.FC = () => {
             <label className="block text-sm font-medium mb-1 text-[16px]">
               Password
             </label>
-            <input
+            <motion.input
+              layoutId="password"
               type={showPassword ? "text" : "password"}
               {...register("password", { required: true })}
               className="w-full mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none pr-10"

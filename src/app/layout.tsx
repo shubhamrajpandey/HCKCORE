@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "./components/header/page";
-
-
+import PageAnimation from "./components/Framer-motion/pageAnimation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,11 +14,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata:Metadata = {
+export const metadata: Metadata = {
   title: "HCKCORE",
   description: "Student registration for HeraldHub platform",
   icons: {
-    icon: "/hck core logo.svg", 
+    icon: "/hck core logo.svg",
   },
 };
 
@@ -34,7 +33,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-        {children}
+        <PageAnimation> {children}</PageAnimation>
       </body>
     </html>
   );
