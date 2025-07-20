@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 
 type FormData = {
   email: string;
@@ -35,13 +36,21 @@ export default function Login() {
         }
       );
       if (res.status == 200) {
-        localStorage.setItem("token", res.data.token);
+        if (remembermeChecked) {
+          localStorage.setItem("token", res.data.token);
+        } else {
+          sessionStorage.setItem("token", res.data.token);
+        }
+
+        toast.success("Logged in Sucessfully");
         router.push("/home");
-      } else {
-        alert("something went wrong?");
       }
     } catch (e: any) {
-      alert(e.response?.data?.message || "something went wrong");
+      if (e.response?.status === 401) {
+        toast.error("Please check your credentials.");
+      } else {
+        toast.error(e.response?.data?.message || "Cannot Fetch the Data");
+      }
       console.error(e);
     }
 
