@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 type FormData = {
   email: string;
@@ -34,7 +35,7 @@ export default function Login() {
         }
       );
       if (res.status == 200) {
-        localStorage.setItem("token", res.data.token); 
+        localStorage.setItem("token", res.data.token);
         router.push("/home");
       } else {
         alert("something went wrong?");
@@ -96,7 +97,8 @@ export default function Login() {
               <label className="font-medium">
                 Email <span className="text-red-600">*</span>
               </label>
-              <input
+              <motion.input
+                layoutId="email"
                 type="email"
                 placeholder="Enter your email address"
                 {...register("email", { required: "Email is required" })}
@@ -112,7 +114,8 @@ export default function Login() {
               <label className="font-medium">
                 Password <span className="text-red-600">*</span>
               </label>
-              <input
+              <motion.input
+                layoutId="password"
                 type="password"
                 placeholder="Enter your password"
                 {...register("password", {
