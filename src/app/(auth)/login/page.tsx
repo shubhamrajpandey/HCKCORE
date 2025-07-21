@@ -36,6 +36,8 @@ export default function Login() {
         }
       );
       if (res.status == 200) {
+        console.log(res.data);
+        
         if (remembermeChecked) {
           localStorage.setItem("token", res.data.token);
         } else {
