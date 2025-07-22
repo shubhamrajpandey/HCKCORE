@@ -9,6 +9,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 
+//type define gareko
 type FormData = {
   email: string;
   password: string;
@@ -26,8 +27,11 @@ export default function Login() {
   } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
+    const toastId = toast.loading("Logging you in...");
+
     try {
       const res = await axios.post(
+        //api fetch with the axios
         "https://herald-hub-backend.onrender.com/auth/login",
         data,
         {
@@ -35,45 +39,33 @@ export default function Login() {
           headers: { "content-type": "application/json" },
         }
       );
-      if (res.status == 200) {
-        console.log(res.data);
-        
+
+      if (res.status === 200) {
         if (remembermeChecked) {
-          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("Token", res.data.Token);
         } else {
-          sessionStorage.setItem("token", res.data.token);
+          sessionStorage.setItem("Token", res.data.Token);
         }
 
-        toast.success("Logged in Sucessfully");
+        //addeventlistiner jastai ho it respond userLogged in when it is triggered
+        window.dispatchEvent(new Event("userLoggedIn"));
+
+        toast.success("Logged in Successfully", { id: toastId });
         router.push("/home");
       }
-    } catch (e: any) {
-      if (e.response?.status === 401) {
-        toast.error("Please check your credentials.");
-      } else {
-        toast.error(e.response?.data?.message || "Cannot Fetch the Data");
-      }
-      console.error(e);
-    }
+    } catch (e: unknown) {
+      const error = e as {
+        response?: { status?: number; data?: { message?: string } };
+      };
 
-    // const res = await fetch(
-    //   "https://herald-hub-backend.onrender.com/auth/login",
-    //   {
-    //     method: "POST",
-    //     credentials: remembermeChecked ? "include" : "omit",
-    //     headers: {
-    //       "content-type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    //   }
-    // );
-    // const result = await res.json();
-    // console.log(result);
-    // if (!res.ok) {
-    //   alert(result.message || "something went wrong");
-    // } else {
-    //   router.push("/dashboard/home");
-    // }
+      if (error.response?.status === 401) {
+        toast.error("Please check your credentials.", { id: toastId });
+      } else {
+        toast.error(error.response?.data?.message || "Cannot fetch the data", {
+          id: toastId,
+        });
+      }
+    }
   };
 
   useEffect(() => {
@@ -92,7 +84,6 @@ export default function Login() {
   return (
     <div className="min-h-[calc(100vh-120px)] flex items-center justify-center">
       <div className="flex flex-col md:flex-row w-full md:w-[1321] rounded-lg overflow-hidden justify-between">
-        {/* Left side: Form and Google button */}
         <div className="w-fit p-10 flex flex-col justify-center">
           <h1 className="text-4xl font-bold mb-8">Welcome back!</h1>
 
@@ -115,11 +106,6 @@ export default function Login() {
                 {...register("email", { required: "Email is required" })}
                 className="w-[415px] h-[60px] mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none"
               />
-              {/* {errors.email && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.email.message}
-                </p>
-              )} */}
             </div>
             <div className="flex flex-col">
               <label className="font-medium">
@@ -134,11 +120,6 @@ export default function Login() {
                 })}
                 className="w-[415px] h-[60px] mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none"
               />
-              {/* {errors.password && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.password.message}
-                </p>
-              )} */}
             </div>
             <div className="flex justify-between items-center text-sm">
               <div className="flex items-center">
@@ -183,7 +164,7 @@ export default function Login() {
             </button>
 
             <p className="text-sm text-center mt-2">
-              Dont have an account?{" "}
+              Don’t have an account?{" "}
               <Link href="/signin" className="text-green-600 hover:underline">
                 Sign Up
               </Link>

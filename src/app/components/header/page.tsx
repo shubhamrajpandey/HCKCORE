@@ -7,29 +7,41 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaUserCircle } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const router = useRouter();
 
-
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token);
+    const checkLogin = () => {
+      const token =
+        localStorage.getItem("Token") || sessionStorage.getItem("Token");
+      setIsLoggedIn(!!token);
+    };
+
+    checkLogin();
+
+    window.addEventListener("userLoggedIn", checkLogin);
+
+    return () => {
+      window.removeEventListener("userLoggedIn", checkLogin);
+    };
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("Token");
+    sessionStorage.removeItem("Token");
     setIsLoggedIn(false);
     setShowDropdown(false);
+    window.dispatchEvent(new Event("userLoggedIn"));
     router.push("/login");
   };
 
   return (
     <header className="bg-[#1B1B1B] text-white h-[80px] w-full font-poppins relative">
       <div className="max-w-[1320px] mx-auto flex items-center justify-between h-full">
-        
         <Link href="/home">
           <div className="w-[80px] h-[60px]">
             <Image
@@ -41,11 +53,45 @@ export const Header = () => {
           </div>
         </Link>
 
-        
         <ul className="flex gap-18 font-semibold text-[18px]">
-          <Link href="/Programs" className="cursor-pointer hover:text-[#74BF44]">Programs</Link>
-          <Link href="/extra-resources" className="cursor-pointer hover:text-[#74BF44]">Extras</Link>
-          <Link href="/contributions" className="cursor-pointer hover:text-[#74BF44]">Contributions</Link>
+          <li
+            className="cursor-pointer hover:text-[#74BF44]"
+            onClick={() => {
+              if (isLoggedIn) {
+                router.push("/programs");
+              } else {
+                toast.error("Please login first to access Programs.");
+              }
+            }}
+          >
+            Programs
+          </li>
+
+          <li
+            className="cursor-pointer hover:text-[#74BF44]"
+            onClick={() => {
+              if (isLoggedIn) {
+                router.push("/extra-resources");
+              } else {
+                toast.error("Please login first to access Extras.");
+              }
+            }}
+          >
+            Extras
+          </li>
+
+          <li
+            className="cursor-pointer hover:text-[#74BF44]"
+            onClick={() => {
+              if (isLoggedIn) {
+                router.push("/contributions");
+              } else {
+                toast.error("Please login first to access Contributions.");
+              }
+            }}
+          >
+            Contributions
+          </li>
         </ul>
 
         <div className="flex items-center gap-6 relative">
