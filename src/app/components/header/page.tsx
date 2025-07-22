@@ -13,6 +13,7 @@ export const Header = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const router = useRouter();
 
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsLoggedIn(!!token);
