@@ -13,8 +13,7 @@ import { Toaster, toast } from "react-hot-toast";
 import { motion } from "framer-motion";
 //sabai field ko type haru
 interface FormInput {
-  fullName: string;
-  phoneNumber: string;
+  UserName: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -82,37 +81,18 @@ const Signin: React.FC = () => {
           {/* Full Name  */}
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1 text-[16px]">
-              Full Name
+              Username
             </label>
             <input
               type="text"
-              {...register("fullName", {
+              {...register("UserName", {
                 required: "Please enter your full name",
               })}
               className="w-[90%] mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none"
             />
-            {errors.fullName && (
+            {errors.UserName && (
               <span className="text-red-500 text-xs mt-1 block">
-                {errors.fullName.message}
-              </span>
-            )}
-          </div>
-
-          {/* phoneNumber */}
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-1 text-[16px]">
-              Phone Number
-            </label>
-            <input
-              type="number"
-              {...register("phoneNumber", {
-                required: "Phone number is required",
-              })}
-              className="w-[90%] mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none"
-            />
-            {errors.phoneNumber && (
-              <span className="text-red-500 text-xs mt-1 block">
-                {errors.phoneNumber.message}
+                {errors.UserName.message}
               </span>
             )}
           </div>
