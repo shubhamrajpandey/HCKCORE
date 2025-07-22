@@ -42,9 +42,9 @@ export const Header = () => {
 
         
         <ul className="flex gap-18 font-semibold text-[18px]">
-          <li className="cursor-pointer hover:text-[#74BF44]">Programs</li>
-          <li className="cursor-pointer hover:text-[#74BF44]">Extras</li>
-          <li className="cursor-pointer hover:text-[#74BF44]">Contributions</li>
+          <Link href="/programs" className="cursor-pointer hover:text-[#74BF44]">Programs</Link>
+          <Link href="/extra-resources" className="cursor-pointer hover:text-[#74BF44]">Extras</Link>
+          <Link href="/contributions" className="cursor-pointer hover:text-[#74BF44]">Contributions</Link>
         </ul>
 
         <div className="flex items-center gap-6 relative">
