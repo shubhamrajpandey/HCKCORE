@@ -42,7 +42,7 @@ export const Header = () => {
 
         
         <ul className="flex gap-18 font-semibold text-[18px]">
-          <Link href="/programs" className="cursor-pointer hover:text-[#74BF44]">Programs</Link>
+          <Link href="/Programs" className="cursor-pointer hover:text-[#74BF44]">Programs</Link>
           <Link href="/extra-resources" className="cursor-pointer hover:text-[#74BF44]">Extras</Link>
           <Link href="/contributions" className="cursor-pointer hover:text-[#74BF44]">Contributions</Link>
         </ul>
