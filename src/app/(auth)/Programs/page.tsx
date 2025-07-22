@@ -6,7 +6,7 @@ export default function Programs() {
     <div className="min-h-[calc(100vh-120px)] flex items-center justify-center bg-white">
       <div className="w-[78%] h-[80vh] flex flex-col gap-10">
         <div className="flex space-x-10">
-          <SubjectDropdown/> <LevelDropdown/>
+          <SubjectDropdown /> <LevelDropdown />
         </div>
       </div>
     </div>
