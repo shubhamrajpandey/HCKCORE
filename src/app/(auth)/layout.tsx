@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Header } from "../components/header/page";
 
 export const metadata:Metadata = {
   title: "HCKCORE",
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
       <main
       >
+        <Header/>
         {children}
     </main>
   );
