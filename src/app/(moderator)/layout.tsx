@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-
+import ModeratorSlideBar from "../components/moderatorSlidebar/moderatorSlidebar";
 
 export const metadata: Metadata = {
   title: "HCKCORE | Moderator",
@@ -16,7 +16,10 @@ export default function ModeratorLayout({
 }>) {
   return (
     <>
-      <main className="min-h-screen px-4">{children}</main>
+      <div className="flex">
+        <ModeratorSlideBar />
+        <main className="min-h-screen px-4">{children}</main>
+      </div>
     </>
   );
 }

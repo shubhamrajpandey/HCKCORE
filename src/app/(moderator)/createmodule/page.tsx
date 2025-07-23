@@ -2,6 +2,7 @@
 
 import LevelDropdown from "@/app/components/Dropdown/LevelDropdown";
 import SubjectDropdown from "@/app/components/Dropdown/SubjectDropdown";
+
 import React from "react";
 import { useForm } from "react-hook-form";
 
@@ -24,7 +25,8 @@ export const CreateModule = () => {
   };
 
   return (
-    <div className="w-full px-6 py-8 md:px-20 lg:px-32 xl:px-40 min-h-screen">
+    <>
+    <div className="w-full px-6 py-8 md:px-20 lg:px-32 xl:px-40">
       <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg ">
         <div className="flex flex-col md:flex-row gap-4 mb-6">
           <SubjectDropdown />
@@ -117,6 +119,7 @@ export const CreateModule = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 
