@@ -28,7 +28,21 @@ export default function LevelDropdown() {
 
           <span className="font-[400] text-lg">{selectedLevel}</span>
         </div>
-        <span className="ml-auto group-hover:text-white">&#x25BC;</span>
+        <svg
+          width="26"
+          height="26"
+          viewBox="0 0 26 26"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="transition-colors duration-200"
+        >
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M14.148 17.3989C13.8433 17.7032 13.4303 17.8741 12.9996 17.8741C12.569 17.8741 12.156 17.7032 11.8513 17.3989L5.72181 11.2716C5.41711 10.9667 5.24599 10.5533 5.24609 10.1223C5.2462 9.6913 5.41751 9.27798 5.72236 8.97328C6.0272 8.66858 6.4406 8.49746 6.87161 8.49756C7.30263 8.49766 7.71595 8.66898 8.02065 8.97382L12.9996 13.9528L17.9786 8.97382C18.285 8.67767 18.6954 8.51368 19.1215 8.51718C19.5475 8.52068 19.9552 8.69139 20.2566 8.99253C20.5581 9.29368 20.7291 9.70117 20.733 10.1272C20.7369 10.5533 20.5733 10.9639 20.2775 11.2705L14.1491 17.4L14.148 17.3989Z"
+            className="fill-black group-hover:fill-white transition-colors duration-200"
+          />
+        </svg>
       </button>
 
       {/* Dropdown Menu */}
