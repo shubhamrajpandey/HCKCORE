@@ -27,7 +27,7 @@ export const CreateModule = () => {
   return (
     <>
     <div className="w-full px-2 py-13 ">
-      <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg ">
+      <div className="max-w-4xl mx-auto  p-8 rounded-lg ">
         <div className="flex flex-col md:flex-row gap-4 mb-6">
           <SubjectDropdown />
           <LevelDropdown />
