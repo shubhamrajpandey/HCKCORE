@@ -1,35 +1,42 @@
 "use client";
+
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import { useState } from "react";
+import { CiMail } from "react-icons/ci";
+import { BsTelephone } from "react-icons/bs";
+import { MdOutlineLogout } from "react-icons/md";
+import { RiSchoolLine } from "react-icons/ri";
+import { CgProfile } from "react-icons/cg";
 
 export default function ModeratorSlideBar() {
   const router = useRouter();
   const path = usePathname();
+  const [showProfileCard, setShowProfileCard] = useState(false);
+
   return (
-    <aside className="flex flex-col gap-[53px] w-[420px] h-[1036px] bg-black left-0 top-0 rounded-xl ml-4 mt-4 pl-[33px] pr-[65px]">
+    <aside className="flex flex-col gap-[53px] w-[420px] h-[1036px] bg-black left-0 top-0 rounded-xl ml-4 mt-5.5 pl-[33px] pr-[65px]">
       <div className="ml-[12px] mt-[27px]">
         <Image
           src="/imgs/logo.png"
           alt="Logo"
           width={81}
           height={66}
-          className="object-contain mt-15 mr-20"
+          className="object-contain mt-10 mr-20"
           priority
         />
       </div>
-      <div className="flex flex-col gap-[380px]">
-        <div className="gap-[28px] flex flex-col">
+
+      <div className="flex flex-col justify-between h-full">
+        <div className="flex flex-col gap-[28px]">
           <div
             className={`flex space-x-[20px] p-2 rounded-lg w-[322px] h-[64px] items-center py-[10px] pl-[13px] cursor-pointer ${
               path === "/dashboard" ? "bg-[#74BF44]" : "hover:bg-[#74BF44]"
             }`}
-            onClick={() => {
-              router.push("/dashboard");
-            }}
+            onClick={() => router.push("/dashboard")}
           >
             <svg
-            className="ml-1"
+              className="ml-1"
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -43,16 +50,15 @@ export default function ModeratorSlideBar() {
             </svg>
             <span className="text-white font-[500] text-[20px]">Dashboard</span>
           </div>
+
           <div
-            className={`flex space-x-[20px] hover:bg-[#74BF44] p-2 rounded-lg w-[322px] h-[64px] items-center py-[10px] pl-[13px] cursor-pointer ${
+            className={`flex space-x-[20px] p-2 rounded-lg w-[322px] h-[64px] items-center py-[10px] pl-[13px] cursor-pointer ${
               path === "/module" ? "bg-[#74BF44]" : "hover:bg-[#74BF44]"
             }`}
-            onClick={() => {
-              router.push("/module");
-            }}
+            onClick={() => router.push("/module")}
           >
             <svg
-            className="ml-1"
+              className="ml-1"
               width="30"
               height="22"
               viewBox="0 0 30 22"
@@ -64,23 +70,20 @@ export default function ModeratorSlideBar() {
                 fill="white"
               />
             </svg>
-
             <span className="text-white font-[500] text-[20px]">Modules</span>
           </div>
+
           <div
-            className={`flex space-x-[20px] hover:bg-[#74BF44] p-2 rounded-lg w-[322px] h-[64px] items-center py-[10px] pl-[13px] cursor-pointer ${
-              path === "/createmodule"? "bg-[#74BF44]" : "hover:bg-[#74BF44]"
+            className={`flex space-x-[20px] p-2 rounded-lg w-[322px] h-[64px] items-center py-[10px] pl-[13px] cursor-pointer ${
+              path === "/createmodule" ? "bg-[#74BF44]" : "hover:bg-[#74BF44]"
             }`}
-            onClick={() => {
-              router.push("/createmodule");
-            }}
+            onClick={() => router.push("/createmodule")}
           >
             <svg
               className="ml-1"
               width="23"
               height="24"
               viewBox="0 0 23 24"
-              
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -89,21 +92,19 @@ export default function ModeratorSlideBar() {
                 fill="white"
               />
             </svg>
-
             <span className="text-white font-[500] text-[20px]">
               Create Module
             </span>
           </div>
+
           <div
-            className={`flex space-x-[20px] hover:bg-[#74BF44] p-2 rounded-lg w-[322px] h-[64px] items-center py-[10px] pl-[13px] cursor-pointer ${
-              path === "/category" ? "bg-[#74BF44]" : "hover:bg-[#74BF44]"
+            className={`flex space-x-[20px] p-2 rounded-lg w-[322px] h-[64px] items-center py-[10px] pl-[13px] cursor-pointer ${
+              path === "/extras" ? "bg-[#74BF44]" : "hover:bg-[#74BF44]"
             }`}
-            onClick={() => {
-              router.push("/category");
-            }}
+            onClick={() => router.push("/extras")}
           >
             <svg
-            className="ml-1"
+              className="ml-1"
               width="23"
               height="24"
               viewBox="0 0 23 24"
@@ -115,26 +116,78 @@ export default function ModeratorSlideBar() {
                 fill="white"
               />
             </svg>
-
-            <span className="text-white font-[500] text-[20px]">Category</span>
+            <span className="text-white font-[500] text-[20px]">Extras</span>
           </div>
         </div>
-        <div className="flex space-x-[16px] items-center justify-start h-fit w-full ml-[11px]">
-          <Image
-            src="/imgs/Profile.png"
-            alt="Logo"
-            width={61}
-            height={61}
-            className="object-contain"
-            priority
-          />
 
-          <div className="flex- flex-col text-white gap-3">
-            <p className="text-[21px] font-[500]">Bishal Khadkaa</p>
-            <p className="text-[15px] font-[500] text-[#949494]">
-              Module Leader
-            </p>
+        <div className="relative">
+          <div
+            className="flex space-x-[16px] items-center justify-start h-fit w-full py-10 ml-[11px] cursor-pointer"
+            onClick={() => setShowProfileCard((prev) => !prev)}
+          >
+            <Image
+              src="/imgs/Profile.png"
+              alt="Profile"
+              width={61}
+              height={61}
+              className="object-contain"
+              priority
+            />
+
+            <div className="flex flex-col text-white gap-1">
+              <p className="text-[21px] font-[500]">Bishal Khadkaa</p>
+              <p className="text-[15px] font-[500] text-[#949494]">
+                Module Leader
+              </p>
+            </div>
           </div>
+
+          {showProfileCard && (
+            <div className="absolute bottom-[114px] left-0 bg-white text-black w-[375px] h-[340px] shadow-lg p-5 z-50 ">
+              <div className="flex items-center space-x-3 mb-4">
+                <Image
+                  src="/imgs/Profile.png"
+                  alt="Profile"
+                  width={50}
+                  height={50}
+                  className="rounded-full"
+                />
+                <div>
+                  <p className="font-semibold text-lg">Bishal Khadka</p>
+                  <p className="text-sm text-gray-500">@bishal_khadka365</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 text-[20px] mb-2">
+                <CiMail className="w-[21px] h-[16px] text-6xl" />
+                <p className="text-[15px] tracking-normal">
+                  bishalkhadka@heraldcollege.edu.np
+                </p>
+              </div>
+              <div className="flex items-center gap-2 text-sm mb-2">
+                <RiSchoolLine className="text-lg" />
+                <p>Herald College Kathmandu</p>
+              </div>
+              <div className="flex items-center gap-2 text-sm mb-4">
+                <BsTelephone className="text-lg" />
+                <p>01-5970120</p>
+              </div>
+
+              <div className="flex items-center gap-2 pt-3 text-sm mb-2">
+                <CgProfile className="text-lg" />
+                <button
+                  onClick={() => router.push("/profile")}
+                  className="hover:underline"
+                >
+                  My Profile
+                </button>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <MdOutlineLogout className="text-lg text-red-500" />
+                <button className="text-red-500 hover:underline">Logout</button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </aside>
