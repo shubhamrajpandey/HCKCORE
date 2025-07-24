@@ -1,8 +1,11 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+
 export default function ModeratorSlideBar() {
   const router = useRouter();
+  const path = usePathname();
   return (
     <aside className="flex flex-col gap-[53px] w-[420px] h-[1036px] bg-black left-0 top-0 rounded-xl ml-4 mt-4 pl-[33px] pr-[65px]">
       <div className="ml-[12px] mt-[27px]">
@@ -18,12 +21,15 @@ export default function ModeratorSlideBar() {
       <div className="flex flex-col gap-[380px]">
         <div className="gap-[28px] flex flex-col">
           <div
-            className="flex space-x-[20px] hover:bg-[#74BF44] p-2 rounded-md w-[322px] h-[64px] items-center py-[10px] pl-[11px] cursor-pointer"
+            className={`flex space-x-[20px] p-2 rounded-lg w-[322px] h-[64px] items-center py-[10px] pl-[13px] cursor-pointer ${
+              path === "/dashboard" ? "bg-[#74BF44]" : "hover:bg-[#74BF44]"
+            }`}
             onClick={() => {
               router.push("/dashboard");
             }}
           >
             <svg
+            className="ml-1"
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -38,12 +44,15 @@ export default function ModeratorSlideBar() {
             <span className="text-white font-[500] text-[20px]">Dashboard</span>
           </div>
           <div
-            className="flex space-x-[20px] hover:bg-[#74BF44] p-2 rounded-md w-[322px] h-[64px] items-center py-[10px] pl-[11px] cursor-pointer"
+            className={`flex space-x-[20px] hover:bg-[#74BF44] p-2 rounded-lg w-[322px] h-[64px] items-center py-[10px] pl-[13px] cursor-pointer ${
+              path === "/module" ? "bg-[#74BF44]" : "hover:bg-[#74BF44]"
+            }`}
             onClick={() => {
               router.push("/module");
             }}
           >
             <svg
+            className="ml-1"
               width="30"
               height="22"
               viewBox="0 0 30 22"
@@ -59,15 +68,19 @@ export default function ModeratorSlideBar() {
             <span className="text-white font-[500] text-[20px]">Modules</span>
           </div>
           <div
-            className="flex space-x-[20px] hover:bg-[#74BF44] p-2 rounded-md w-[322px] h-[64px] items-center py-[10px] pl-[11px] cursor-pointer"
+            className={`flex space-x-[20px] hover:bg-[#74BF44] p-2 rounded-lg w-[322px] h-[64px] items-center py-[10px] pl-[13px] cursor-pointer ${
+              path === "/createmodule"? "bg-[#74BF44]" : "hover:bg-[#74BF44]"
+            }`}
             onClick={() => {
               router.push("/createmodule");
             }}
           >
             <svg
+              className="ml-1"
               width="23"
               height="24"
               viewBox="0 0 23 24"
+              
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -78,16 +91,19 @@ export default function ModeratorSlideBar() {
             </svg>
 
             <span className="text-white font-[500] text-[20px]">
-              Create Modules
+              Create Module
             </span>
           </div>
           <div
-            className="flex space-x-[20px] hover:bg-[#74BF44] p-2 rounded-md w-[322px] h-[64px] items-center py-[10px] pl-[11px] cursor-pointer"
+            className={`flex space-x-[20px] hover:bg-[#74BF44] p-2 rounded-lg w-[322px] h-[64px] items-center py-[10px] pl-[13px] cursor-pointer ${
+              path === "/category" ? "bg-[#74BF44]" : "hover:bg-[#74BF44]"
+            }`}
             onClick={() => {
               router.push("/category");
             }}
           >
             <svg
+            className="ml-1"
               width="23"
               height="24"
               viewBox="0 0 23 24"
