@@ -82,10 +82,12 @@ export default function Login() {
   }, [errors, submitClicked]);
 
   return (
-    <div className="min-h-[calc(100vh-120px)] flex items-center justify-center">
-      <div className="flex flex-col md:flex-row w-full md:w-[1321] rounded-lg overflow-hidden justify-between">
-        <div className="w-fit p-10 flex flex-col justify-center">
-          <h1 className="text-4xl font-bold mb-8">Welcome back!</h1>
+    <div className="h-auto md:h-[calc(100vh-120px)] w-full flex items-center justify-center">
+      <div className="flex flex-col md:flex-row w-full md:w-[1321px] rounded-lg overflow-hidden justify-between p-3 md:p-0">
+        <div className="md:w-fit w-full p-5 md:p-10 flex  flex-col justify-center">
+          <h1 className="text-3xl md:text-4xl font-semibold md:font-bold mb-3 md:mb-8">
+            Welcome back!
+          </h1>
 
           <form
             onSubmit={(e) => {
@@ -96,7 +98,7 @@ export default function Login() {
             className="flex flex-col gap-4"
           >
             <div className="flex flex-col">
-              <label className="font-medium">
+              <label className="font-normal md:font-medium">
                 Email <span className="text-red-600">*</span>
               </label>
               <motion.input
@@ -104,7 +106,7 @@ export default function Login() {
                 type="email"
                 placeholder="Enter your email address"
                 {...register("email", { required: "Email is required" })}
-                className="w-[415px] h-[60px] mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none"
+                className="md:w-[415px] md:h-[60px] w-full h-auto mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none"
               />
             </div>
             <div className="flex flex-col">
@@ -118,7 +120,7 @@ export default function Login() {
                 {...register("password", {
                   required: "Password is required",
                 })}
-                className="w-[415px] h-[60px] mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none"
+                className="md:w-[415px] md:h-[60px] w-full h-auto mt-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 outline-none"
               />
             </div>
             <div className="flex justify-between items-center text-sm">
@@ -139,7 +141,7 @@ export default function Login() {
 
             <button
               type="submit"
-              className="bg-green-500 text-white py-3 rounded-lg font-medium hover:bg-green-600 transition w-[415px] h-[60px] cursor-pointer"
+              className="bg-green-500 text-white py-3 rounded-lg font-medium hover:bg-green-600 transition md:w-[415px] md:h-[60px] w-full h-auto cursor-pointer"
             >
               Login
             </button>
@@ -152,7 +154,7 @@ export default function Login() {
 
             <button
               type="button"
-              className="flex items-center justify-center gap-3 border border-gray-400 py-3 rounded-lg w-[415px] h-[60px] cursor-pointer"
+              className="flex items-center justify-center gap-3 border border-gray-400 py-3 rounded-lg md:w-[415px] md:h-[60px] w-full h-auto cursor-pointer"
             >
               <Image
                 src="/imgs/google.png"
@@ -171,7 +173,7 @@ export default function Login() {
             </p>
           </form>
         </div>
-        <div className="relative w-1/2 flex items-center justify-center p-5 md:w-[500px] min-w-[300px] h-[300px] md:h-[500px]">
+        <div className="hidden relative w-1/2 md:flex items-center justify-center p-5 md:w-[500px] min-w-[300px] h-[300px] md:h-[500px]">
           <Image
             src="/imgs/image.png"
             alt="Illustration"
