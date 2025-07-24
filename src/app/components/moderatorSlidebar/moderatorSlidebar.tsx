@@ -105,7 +105,7 @@ export default function ModeratorSlideBar() {
         </div>
         <div className="flex space-x-[16px] items-center justify-start h-fit w-full ml-[11px]">
           <Image
-            src="/imgs/profile.png"
+            src="/imgs/Profile.png"
             alt="Logo"
             width={61}
             height={61}

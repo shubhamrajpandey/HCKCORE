@@ -16,7 +16,7 @@ export default function ModeratorLayout({
 }>) {
   return (
     <>
-      <div className="flex">
+      <div className="flex ">
         <ModeratorSlideBar />
         <main className="min-h-screen px-4">{children}</main>
       </div>

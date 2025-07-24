@@ -26,7 +26,7 @@ export const CreateModule = () => {
 
   return (
     <>
-    <div className="w-full px-6 py-8 md:px-20 lg:px-32 xl:px-40">
+    <div className="w-full px-2 py-13 ">
       <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg ">
         <div className="flex flex-col md:flex-row gap-4 mb-6">
           <SubjectDropdown />
@@ -35,7 +35,7 @@ export const CreateModule = () => {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           <div>
-            <label className="block text-[16px] font-medium mb-1 ">
+            <label className="block text-[17px]/11 font-medium mb-1 ">
               Module Name
             </label>
             <input
@@ -44,7 +44,7 @@ export const CreateModule = () => {
               {...register("moduleName", {
                 required: "Module name is required",
               })}
-              className="w-full px-4 py-3 border border-gray-500 rounded-md focus:outline-none  focus:border-none  focus:ring-2 focus:ring-[#A4C93A]"
+              className="w-[865px] px-4 py-4 border border-gray-500 rounded-md focus:outline-none  focus:border-none  focus:ring-2 focus:ring-[#74BF44]"
             />
             {errors.moduleName && (
               <p className="text-red-500 text-sm mt-1">
@@ -54,7 +54,7 @@ export const CreateModule = () => {
           </div>
 
           <div>
-            <label className="block text-[16px] font-medium mb-1">
+            <label className="block text-[17px]/11 font-medium mb-1">
               Module Code
             </label>
             <input
@@ -63,7 +63,7 @@ export const CreateModule = () => {
               {...register("moduleCode", {
                 required: "Module code is required",
               })}
-              className="w-full px-4 py-3 border border-gray-500 rounded-md focus:outline-none focus:border-none focus:ring-2 focus:ring-[#A4C93A]"
+              className="w-[865px] px-4 py-4 border border-gray-500 rounded-md focus:outline-none focus:border-none focus:ring-2 focus:ring-[#74BF44]"
             />
             {errors.moduleCode && (
               <p className="text-red-500 text-sm mt-1">
@@ -73,7 +73,7 @@ export const CreateModule = () => {
           </div>
 
           <div>
-            <label className="block text-[16px] font-medium mb-1">
+            <label className="block text-[17px]/11 font-medium mb-1">
               Module Leader
             </label>
             <input
@@ -82,7 +82,7 @@ export const CreateModule = () => {
               {...register("moduleLeader", {
                 required: "Module leader is required",
               })}
-              className="w-full px-4 py-3 border border-gray-500 rounded-md focus:outline-none  focus:border-none focus:ring-2 focus:ring-[#A4C93A]"
+              className="w-[865px] px-4 py-4 border border-gray-500 rounded-md focus:outline-none  focus:border-none focus:ring-2 focus:ring-[#74BF44]"
             />
             {errors.moduleLeader && (
               <p className="text-red-500 text-sm mt-1">
@@ -92,7 +92,7 @@ export const CreateModule = () => {
           </div>
 
           <div>
-            <label className="block text-[16px] font-medium mb-1">
+            <label className="block text-[17px]/11 font-medium mb-1">
               Description
             </label>
             <textarea
@@ -101,7 +101,7 @@ export const CreateModule = () => {
               {...register("description", {
                 required: "Description is required",
               })}
-              className="w-full px-4 py-3 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-[#A4C93A] resize-none"
+              className="w-[865px] px-4 py-4 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-[#74BF44] resize-none"
             ></textarea>
             {errors.description && (
               <p className="text-red-500 text-sm mt-1">
@@ -112,7 +112,7 @@ export const CreateModule = () => {
 
           <button
             type="submit"
-            className="bg-black text-white px-6 py-3 rounded-md hover:bg-[#A4C93A] hover:text-black transition-all duration-300"
+            className=" w-[156px] h-[50px] text-[15px] font-medium bg-black text-white px-6 py-3 rounded-md hover:bg-[#74BF44] transition-all duration-300"
           >
             Create Module
           </button>
