@@ -143,48 +143,52 @@ export default function ModeratorSlideBar() {
           </div>
 
           {showProfileCard && (
-            <div className="absolute bottom-[114px] left-0 bg-white text-black w-[375px] h-[340px] shadow-lg p-5 z-50 ">
-              <div className="flex items-center space-x-3 mb-4">
+            <div className="absolute bottom-[114px] left-0 bg-white text-black w-[375px] h-[340px] shadow-lg p-6 z-50 ">
+              <div className="flex items-center space-x-3 mb-7">
                 <Image
                   src="/imgs/Profile.png"
                   alt="Profile"
-                  width={50}
-                  height={50}
+                  width={70}
+                  height={70}
                   className="rounded-full"
                 />
                 <div>
-                  <p className="font-semibold text-lg">Bishal Khadka</p>
-                  <p className="text-sm text-gray-500">@bishal_khadka365</p>
+                  <p className="font-medium text-[20px]">Bishal Khadka</p>
+                  <p className="text-[13px] font-normal">bishal_khadka365</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 text-[20px] mb-2">
-                <CiMail className="w-[21px] h-[16px] text-6xl" />
-                <p className="text-[15px] tracking-normal">
+              <div className="flex items-center gap-2.5 text-[20px] mb-4.5">
+                <CiMail className="w-[26px] h-[26px]" />
+                <p className="text-[16px] tracking-normal">
                   bishalkhadka@heraldcollege.edu.np
                 </p>
               </div>
-              <div className="flex items-center gap-2 text-sm mb-2">
-                <RiSchoolLine className="text-lg" />
-                <p>Herald College Kathmandu</p>
+              <div className="flex items-center gap-2.5 text-sm mb-4.5">
+                <RiSchoolLine className="w-[25px] h-[25px]" />
+                <p className="text-[16px] tracking-normal">
+                  Herald College Kathmandu
+                </p>
               </div>
-              <div className="flex items-center gap-2 text-sm mb-4">
-                <BsTelephone className="text-lg" />
-                <p>01-5970120</p>
+              <div className="flex items-center gap-2.5 text-sm mb-4.5">
+                <BsTelephone className="w-[25px] h-[25px]" />
+                <p className="text-[16px] tracking-normal">01-5970120</p>
               </div>
 
-              <div className="flex items-center gap-2 pt-3 text-sm mb-2">
-                <CgProfile className="text-lg" />
+              <div className="flex items-center gap-2.5 text-sm mb-4.5">
+                <CgProfile className="w-[25px] h-[25px]" />
                 <button
                   onClick={() => router.push("/profile")}
-                  className="hover:underline"
+                  className="hover:underline text-[16px] tracking-normal"
                 >
                   My Profile
                 </button>
               </div>
-              <div className="flex items-center gap-2 text-sm">
-                <MdOutlineLogout className="text-lg text-red-500" />
-                <button className="text-red-500 hover:underline">Logout</button>
+              <div className="flex items-center gap-2.5 text-sm mb-4.5">
+                <MdOutlineLogout className="w-[25px] h-[25px] text-red-500" />
+                <button className="text-red-500 hover:underline text-[16px] tracking-normal">
+                  Logout
+                </button>
               </div>
             </div>
           )}
