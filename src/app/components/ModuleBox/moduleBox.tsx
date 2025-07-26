@@ -16,7 +16,7 @@ export default function ModuleBox({
   ModuleLeaderName,
 }: ModuleBoxProps) {
   return (
-    <div className="flex flex-col w-full max-w-[440px] px-4 py-3 items-center justify-center rounded-md bg-white">
+    <div className="flex flex-col w-full max-w-[440px] px-4 py-3 items-center justify-center rounded-[15px] bg-white hover:shadow-2xl">
       <div className="w-full h-[210px] flex relative rounded overflow-hidden">
         {Image}
       </div>
