@@ -1,4 +1,3 @@
-
 "use client";
 import DisplayBox from "@/app/components/DisplayBox/displaybox";
 import LevelDropdown from "@/app/components/Dropdown/LevelDropdown";
@@ -41,7 +40,7 @@ export default function Programs() {
   return (
     <>
       {isChecked && (
-        <div className="ml-[271px] mt-[38px] flex flex-col bg-[#F4F4F4]">
+        <div className="ml-[282px] mt-[38px] flex flex-col bg-[#F4F4F4]">
           <div className="flex flex-col gap-2 md:gap-[48px]">
             <div className="flex flex-col md:flex-row space-x-[1px] md:space-x-[50px]">
               <SubjectDropdown />
