@@ -1,13 +1,17 @@
 "use client";
 
-import Image from "next/image";
-import { useRouter, usePathname } from "next/navigation";
 import { useState } from "react";
-import { CiMail } from "react-icons/ci";
-import { BsTelephone } from "react-icons/bs";
-import { MdOutlineLogout } from "react-icons/md";
-import { RiSchoolLine } from "react-icons/ri";
-import { CgProfile } from "react-icons/cg";
+
+import {
+  Image,
+  useRouter,
+  usePathname,
+  CiMail,
+  BsTelephone,
+  MdOutlineLogout,
+  RiSchoolLine,
+  CgProfile,
+} from "@/app/components/index";
 
 export default function ModeratorSlideBar() {
   const router = useRouter();

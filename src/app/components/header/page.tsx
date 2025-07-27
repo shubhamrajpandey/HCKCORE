@@ -1,12 +1,20 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { IoSearch } from "react-icons/io5";
-import { MdNotificationsNone } from "react-icons/md";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
+import {
+  Image,
+  Link,
+  useRouter,
+  MdOutlineLogout,
+  CgProfile,
+  CiMail,
+  RiSchoolLine,
+  BsTelephone,
+  usePathname,
+  IoSearch,
+  MdNotificationsNone,
+  toast,
+} from "@/app/components/index";
 
 export const Header = () => {
   //usestate banako different area ma
@@ -15,6 +23,7 @@ export const Header = () => {
   const [showNotifications, setShowNotifications] = useState(false);
   //router use bhako for routing handle lai
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const checkLogin = () => {
@@ -93,7 +102,11 @@ export const Header = () => {
         {/* Navlink Section */}
         <ul className="flex gap-18 font-semibold text-[18px]">
           <li
-            className="cursor-pointer hover:text-[#74BF44]"
+            className={`cursor-pointer ${
+              pathname === "/programs"
+                ? "text-[#74BF44]"
+                : "text-white hover:text-[#74BF44]"
+            }`}
             onClick={() =>
               isLoggedIn
                 ? router.push("/programs")
@@ -103,7 +116,11 @@ export const Header = () => {
             Programs
           </li>
           <li
-            className="cursor-pointer hover:text-[#74BF44]"
+            className={`cursor-pointer ${
+              pathname === "/extra-resources"
+                ? "text-[#74BF44]"
+                : "text-white hover:text-[#74BF44]"
+            }`}
             onClick={() =>
               isLoggedIn
                 ? router.push("/extra-resources")
@@ -136,9 +153,14 @@ export const Header = () => {
             {/* Notifications Message */}
             {showNotifications && isLoggedIn && (
               <div className="absolute right-0 top-10 bg-white text-black w-[380px] shadow-lg overflow-hidden z-50">
-                <h1 className="px-5 py-4 font-medium text-[16px] border-b border-gray-200">
-                  Notifications
-                </h1>
+                <div className="flex gap-30">
+                  <h1 className="px-5 py-4 font-medium text-[16px] border-b border-gray-200">
+                    Notifications
+                  </h1>
+                  <h1 className="px-5 py-4 mt-1.5 font-medium text-[12px] text-gray-500">
+                    Mark as read
+                  </h1>
+                </div>
                 <div className="max-h-[350px] overflow-y-auto bg-white custom-scrollbar">
                   {notifications.map((note, index) => (
                     <div
@@ -186,24 +208,59 @@ export const Header = () => {
               </button>
 
               {showProfile && (
-                <div className="absolute right-0 top-13 w-[220px] bg-white text-black shadow-lg p-4 z-50">
-                  <p className="text-[16px] font-medium mb-2">
-                    Hello, Swornim!
-                  </p>
-                  <ul className="space-y-2 text-[14px]">
-                    <li className="hover:text-[#74BF44] cursor-pointer">
-                      My Profile
-                    </li>
-                    <li className="hover:text-[#74BF44] cursor-pointer">
-                      Settings
-                    </li>
-                    <li
-                      onClick={handleLogout}
-                      className="hover:text-[#74BF44] cursor-pointer"
-                    >
-                      Logout
-                    </li>
-                  </ul>
+                <div className="absolute right-0 top-13 w-[390px] h-[300px] bg-white text-black shadow-lg p-5 z-50">
+                  <div className="flex items-center space-x-3 mb-5">
+                    <Image
+                      src="/imgs/icon-profile.svg"
+                      alt="Profile"
+                      width={60}
+                      height={60}
+                      className="rounded-full"
+                    />
+                    <div>
+                      <p className="font-medium text-[18px]">Swornim Sanjel</p>
+                      <p className="text-[13px] font-normal">swornim_12</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2.5 text-[20px] mb-4.5">
+                      <CiMail className="w-[21px] h-[21px]" />
+                      <p className="text-[15px] tracking-normal">
+                        np03cs4a240023@heraldcollege.edu.np
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-2.5 text-sm mb-4.5">
+                      <RiSchoolLine className="w-[21px] h-[21px]" />
+                      <p className="text-[15px] tracking-normal">
+                        Herald College Kathmandu
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-2.5 text-sm mb-4.5">
+                      <BsTelephone className="w-[21px] h-[21px]" />
+                      <p className="text-[15px] tracking-normal">01-5970120</p>
+                    </div>
+
+                    <div className="flex items-center gap-2 text-sm mb-4.5">
+                      <CgProfile className="w-[21px] h-[21px]" />
+                      <button
+                        onClick={() => router.push("/profile")}
+                        className="text-[15px]  cursor-pointer"
+                      >
+                        My Profile
+                      </button>
+                    </div>
+
+                    <div className="flex items-center gap-2 text-sm mb-4.5">
+                      <MdOutlineLogout className="w-[22px] h-[22px] text-red-500" />
+                      <button
+                        onClick={handleLogout}
+                        className="text-red-500 hover:underline text-[15px] cursor-pointer"
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
