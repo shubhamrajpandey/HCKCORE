@@ -1,14 +1,14 @@
 type ModuleBoxProps = {
-  Image: React.ReactNode;
+  Title: String;
   SubjectCode: string;
   rating: string;
   Description: string;
-  ProfileLink: React.ReactNode;
+  ProfileLink?: React.ReactNode;
   ModuleLeaderName: string;
 };
 
 export default function ModuleBox({
-  Image,
+  Title,
   SubjectCode,
   rating,
   Description,
@@ -17,8 +17,8 @@ export default function ModuleBox({
 }: ModuleBoxProps) {
   return (
     <div className="flex flex-col w-full max-w-[440px] px-4 py-3 items-center justify-center rounded-[15px] bg-white hover:shadow-2xl">
-      <div className="w-full h-[210px] flex relative rounded overflow-hidden">
-        {Image}
+      <div className="w-full h-[210px] flex  rounded overflow-hidden items-center text-center justify-center flex-wrap text-2xl font-extrabold">
+        {Title}
       </div>
       <div className="mt-3 flex flex-col w-full gap-4 px-5">
         <div className="flex items-center justify-between">
@@ -47,7 +47,24 @@ export default function ModuleBox({
         <p className="text-gray-600 text-sm">{Description}</p>
         <div className="flex items-center gap-3">
           <div className="rounded-full overflow-hidden w-10 h-10">
-            {ProfileLink}
+            {/* For temporary image till backend image modification */}
+            {ProfileLink ? (
+              ProfileLink
+            ) : (
+              <svg
+                className="ml-1"
+                width="30"
+                height="22"
+                viewBox="0 0 30 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.125 9.42857H26.6667V3.14286H21.125V9.42857ZM12.2083 9.42857H17.75V3.14286H12.2083V9.42857ZM3.33333 9.42857H8.875V3.14286H3.33333V9.42857ZM3.33333 18.8571H8.875V12.5714H3.33333V18.8571ZM12.2083 18.8571H17.75V12.5714H12.2083V18.8571ZM21.125 18.8571H26.6667V12.5714H21.125V18.8571ZM0 18.8571V3.14286C0 2.27857 0.326667 1.53895 0.98 0.924C1.63333 0.309047 2.41778 0.00104762 3.33333 0H26.6667C27.5833 0 28.3683 0.308 29.0217 0.924C29.675 1.54 30.0011 2.27962 30 3.14286V18.8571C30 19.7214 29.6739 20.4616 29.0217 21.0776C28.3694 21.6936 27.5844 22.001 26.6667 22H3.33333C2.41667 22 1.63222 21.6925 0.98 21.0776C0.327778 20.4626 0.00111111 19.7225 0 18.8571Z"
+                  fill="white"
+                />
+              </svg>
+            )}
           </div>
           <div className="flex flex-col">
             <span className="font-medium text-sm">{ModuleLeaderName}</span>

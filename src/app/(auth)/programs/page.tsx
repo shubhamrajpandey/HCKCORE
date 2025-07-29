@@ -5,7 +5,6 @@ import SubjectDropdown from "@/app/components/Dropdown/SubjectDropdown";
 import ModuleBox from "@/app/components/ModuleBox/moduleBox";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Programs() {
@@ -121,38 +120,15 @@ export default function Programs() {
           </div>
           <div>
             <ModuleBox
-              Image={
-                <Image
-                  src="/imgs/FOC.png"
-                  alt="Illustration"
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              }
+              Title="testing longest line of Words possible"
               SubjectCode="4CS015"
               rating="4"
               Description="Learn fundamental computing concepts, including hardware, software and problem-solving techniques."
-              ProfileLink={
-                <svg
-                  className="ml-1"
-                  width="30"
-                  height="22"
-                  viewBox="0 0 30 22"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M21.125 9.42857H26.6667V3.14286H21.125V9.42857ZM12.2083 9.42857H17.75V3.14286H12.2083V9.42857ZM3.33333 9.42857H8.875V3.14286H3.33333V9.42857ZM3.33333 18.8571H8.875V12.5714H3.33333V18.8571ZM12.2083 18.8571H17.75V12.5714H12.2083V18.8571ZM21.125 18.8571H26.6667V12.5714H21.125V18.8571ZM0 18.8571V3.14286C0 2.27857 0.326667 1.53895 0.98 0.924C1.63333 0.309047 2.41778 0.00104762 3.33333 0H26.6667C27.5833 0 28.3683 0.308 29.0217 0.924C29.675 1.54 30.0011 2.27962 30 3.14286V18.8571C30 19.7214 29.6739 20.4616 29.0217 21.0776C28.3694 21.6936 27.5844 22.001 26.6667 22H3.33333C2.41667 22 1.63222 21.6925 0.98 21.0776C0.327778 20.4626 0.00111111 19.7225 0 18.8571Z"
-                    fill="white"
-                  />
-                </svg>
-              }
               ModuleLeaderName="Uttam Acharya"
             />
           </div>
         </div>
-      )}{" "}
+      )}
     </>
   );
 }
