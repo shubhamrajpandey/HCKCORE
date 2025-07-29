@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 
 export default function Programs() {
   const [isChecked, setisChecked] = useState(false);
+  const [modules, setModules] = useState([]);
   const router = useRouter();
   useEffect(() => {
     const StoredToken =
@@ -21,15 +22,16 @@ export default function Programs() {
     }
     const fetchData = async () => {
       try {
-        const res = axios.get(
-          "https://herald-hub-backend.onrender.com/modules/1",
+        const res = await axios.get(
+          "https://herald-hub-backend.onrender.com/modules",
           {
             headers: {
               Authorization: `Bearer ${StoredToken}`,
             },
           }
         );
-        console.log((await res).data);
+        setModules(res.data);
+        console.log(res.data); // ✅ Correct
       } catch (e) {
         console.log(e);
       }
@@ -116,16 +118,18 @@ export default function Programs() {
           </div>
           <div className="mt-[48px]">
             <span className="text-[20px] font-[500]">Module</span>
-            <div className="mt-[29px]"></div>
           </div>
-          <div>
-            <ModuleBox
-              Title="testing longest line of Words possible"
-              SubjectCode="4CS015"
-              rating="4"
-              Description="Learn fundamental computing concepts, including hardware, software and problem-solving techniques."
-              ModuleLeaderName="Uttam Acharya"
-            />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-[29px]">
+            {modules.map((module: any) => (
+              <ModuleBox
+                key={module.id}
+                Title={module.name}
+                SubjectCode={module.code}
+                rating={"4"} // static or use module.rating if available
+                Description={module.description}
+                ModuleLeaderName={module.leader}
+              />
+            ))}
           </div>
         </div>
       )}
