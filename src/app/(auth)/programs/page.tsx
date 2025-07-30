@@ -41,13 +41,13 @@ export default function Programs() {
   return (
     <>
       {isChecked && (
-        <div className="ml-[282px] mt-[38px] flex flex-col bg-[#F4F4F4]">
+        <div className="md:ml-[282px] md:mt-[38px] ml-0 mt-0 flex flex-col bg-[#F4F4F4]">
           <div className="flex flex-col gap-2 md:gap-[48px]">
-            <div className="flex flex-col md:flex-row space-x-[1px] md:space-x-[50px]">
+            <div className="flex flex-row space-x-[1px] md:space-x-[50px] overflow-hidden flex-wrap">
               <SubjectDropdown />
               <LevelDropdown />
             </div>
-            <div className="flex md:space-x-[35px] space-x-1">
+            <div className="flex md:space-x-[35px] space-x-1 flex-row flex-wrap md:justify-start md:items-start">
               <DisplayBox
                 image={
                   <svg
@@ -119,7 +119,7 @@ export default function Programs() {
           <div className="mt-[48px]">
             <span className="text-[20px] font-[500]">Module</span>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-[29px]">
+          <div className="flex flex-wrap gap-x-10 gap-y-6 mt-[29px]">
             {modules.map((module: any) => (
               <ModuleBox
                 key={module.id}
