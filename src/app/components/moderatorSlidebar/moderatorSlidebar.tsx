@@ -105,7 +105,7 @@ export default function ModeratorSlideBar() {
             className={`flex space-x-[20px] p-2 rounded-lg w-[322px] h-[64px] items-center py-[10px] pl-[13px] cursor-pointer ${
               path === "/extras" ? "bg-[#74BF44]" : "hover:bg-[#74BF44]"
             }`}
-            onClick={() => router.push("/extras")}
+            onClick={() => router.push("/Extra-moderator")}
           >
             <svg
               className="ml-1"
