@@ -125,7 +125,7 @@ export default function Programs() {
                 key={module.id}
                 Title={module.name}
                 SubjectCode={module.code}
-                rating={"4"} // static or use module.rating if available
+                rating={"4"}
                 Description={module.description}
                 ModuleLeaderName={module.leader}
               />
