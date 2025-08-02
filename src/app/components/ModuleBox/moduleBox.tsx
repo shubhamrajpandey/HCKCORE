@@ -1,5 +1,5 @@
 type ModuleBoxProps = {
-  Title: String;
+  Title: string;
   SubjectCode: string;
   rating: string;
   Description: string;

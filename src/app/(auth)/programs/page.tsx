@@ -7,19 +7,29 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+type Module = {
+  id: string;
+  name: string;
+  code: string;
+  description: string;
+  leader: string;
+};
+
 export default function Programs() {
   const [isChecked, setisChecked] = useState(false);
-  const [modules, setModules] = useState([]);
+  const [modules, setModules] = useState<Module[]>([]);
   const router = useRouter();
   useEffect(() => {
     const StoredToken =
       localStorage.getItem("Token") || sessionStorage.getItem("Token");
+
     if (!StoredToken) {
       router.push("/home");
     } else {
       setisChecked(true);
       console.log("welcome to homepage");
     }
+
     const fetchData = async () => {
       try {
         const res = await axios.get(
@@ -31,13 +41,14 @@ export default function Programs() {
           }
         );
         setModules(res.data);
-        console.log(res.data); // ✅ Correct
+        console.log(res.data);
       } catch (e) {
         console.log(e);
       }
     };
     fetchData();
-  }, []);
+  }, [router]); // ✅ Add router to dependencies
+
   return (
     <>
       {isChecked && (
@@ -120,7 +131,7 @@ export default function Programs() {
             <span className="text-[20px] font-[500]">Module</span>
           </div>
           <div className="flex flex-wrap gap-x-10 gap-y-6 mt-[29px]">
-            {modules.map((module: any) => (
+            {modules.map((module: Module) => (
               <ModuleBox
                 key={module.id}
                 Title={module.name}

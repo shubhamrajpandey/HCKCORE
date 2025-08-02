@@ -6,7 +6,7 @@ import { PiStudentDuotone } from "react-icons/pi";
 import { IoSearchSharp } from "react-icons/io5";
 
 export default function Home() {
-
+  const controls = useAnimation();
   const cardItems = [
     {
       icon: <LiaChalkboardTeacherSolid className="w-8 h-8" />,
@@ -33,7 +33,7 @@ export default function Home() {
     <div className="flex items-center justify-center">
       <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-8 -mt-50">
         {cardItems.map((card, index) => {
-          const controls = useAnimation();
+          
 
           return (
             <motion.div
